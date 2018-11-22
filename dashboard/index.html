@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+
+	<link rel="icon" type="image/x-icon" href="Assets/favicon.ico" />
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+
+	<script type="text/javascript">
+
+		function load_func() {
+			startTime();
+		}
+
+		function startTime() {
+    		var today = new Date();
+    		var h = today.getHours();
+    		var m = today.getMinutes();
+    		var s = today.getSeconds();
+    		h = twelveTime(h);
+    		m = checkTime(m);
+    		s = checkTime(s);
+    		document.getElementById('replaceTime').innerHTML =
+    		h + ":" + m + ":" + s;
+    
+    		var m = today.getMonth() + 1;
+    		var d = today.getDate();
+    		var y = today.getYear() - 100;
+    		document.getElementById('replaceDate').innerHTML = m + "." + d + "." + y;
+    		document.getElementById('dayOfMonth').innerHTML = d;
+
+    		switch(m) {
+    			case 1:
+    				document.getElementById('month').innerHTML = "January";
+    				break;
+    			case 2:
+    				document.getElementById('month').innerHTML = "February";
+    				break;
+    			case 3:
+    				document.getElementById('month').innerHTML = "March";
+    				break;
+    			case 4:
+    				document.getElementById('month').innerHTML = "April";
+    				break;
+    			case 5:
+    				document.getElementById('month').innerHTML = "May";
+    				break;
+    			case 6:
+    				document.getElementById('month').innerHTML = "June";
+    				break;
+    			case 7:
+    				document.getElementById('month').innerHTML = "July";
+    				break;
+    			case 8:
+    				document.getElementById('month').innerHTML = "August";
+    				break;
+    			case 9:
+    				document.getElementById('month').innerHTML = "September";
+    				break;
+    			case 10:
+    				document.getElementById('month').innerHTML = "October";
+    				break;
+    			case 11:
+    				document.getElementById('month').innerHTML = "November";
+    				break;
+    			case 12:
+    				document.getElementById('month').innerHTML = "December";
+    				break;
+    		}
+
+
+    		var dow = today.getDay();
+
+    		switch (dow) {
+    			case 0:
+    				document.getElementById('dayOfWeek').innerHTML = "Sunday";
+    				break;
+    			case 1:
+    				document.getElementById('dayOfWeek').innerHTML = "Monday";
+    				break;
+    			case 2:
+    				document.getElementById('dayOfWeek').innerHTML = "Tuesday";
+    				break;
+    			case 3:
+    				document.getElementById('dayOfWeek').innerHTML = "Wednesday";
+    				break;
+    			case 4:
+    				document.getElementById('dayOfWeek').innerHTML = "Thursday";
+    				break;
+    			case 5:
+    				document.getElementById('dayOfWeek').innerHTML = "Friday";
+    				break;
+    			case 6:
+    				document.getElementById('dayOfWeek').innerHTML = "Saturday";
+    				break;
+    		}
+    		
+    		switch (true) {
+    			case (d == 1 || d == 21 || d == 31):
+    				document.getElementById('th').innerHTML = "st";
+    				break;
+    			case (d == 2 || d == 22):
+    			 	document.getElementById('th').innerHTML = "nd";
+    			 	break;
+    			case (d == 3 || d == 23):
+    			 	document.getElementById('th').innerHTML = "rd";
+    			 	break;
+    			case (d > 3 && d < 21):
+    			 	document.getElementById('th').innerHTML = "th";
+    			 	break;
+    			case (d > 23 && d < 31):
+    			 	document.getElementById('th').innerHTML = "th";
+    			 	break;
+    			 default:
+    			 	document.getElementById('th').innerHTML = "th";
+    			 	break;
+    		}
+
+    		var t = setTimeout(startTime, 500);
+		}
+
+		function checkTime(i) {
+    		if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    		return i;
+		}
+
+		function twelveTime(i) {
+			if (i > 12) {
+				switch (i) {
+					case 13:
+						i = 1;
+						break;
+					case 14:
+						i = 2;
+						break;
+					case 15:
+						i = 3;
+						break;
+					case 16:
+						i = 4;
+						break;
+					case 17:
+						i = 5;
+						break;
+					case 18:
+						i = 6;
+						break;
+					case 19:
+						i = 7;
+						break;
+					case 20:
+						i = 8;
+						break;
+					case 21:
+						i = 9;
+						break;
+					case 22:
+						i = 10;
+						break;
+					case 23:
+						i = 11;
+						break;
+					case 24:
+						i = 12;
+						break;
+					default:
+						break;
+				}
+				if(i > 17) {
+					document.getElementById("goodMorning").innerHTML = "Good evening, James.";
+				} else {
+					document.getElementById("goodMorning").innerHTML = "Good afternoon, James.";
+				}	
+				return i;
+			} else {
+				document.getElementById("goodMorning").innerHTML = "Good morning, James.";
+				return i;
+			}
+		}
+	</script>
+
+	<style type="text/css">
+		body {
+			font-family: 'Lato', sans-serif;
+    		color: #2D2D2D;
+    		margin: 0;
+    		overflow: hidden;
+
+    		color: #FFF;
+
+    		background-color: #FF6F59;
+		}
+		.cls-5 {
+			transition: all 2s ease;
+		}
+		.cls-5:hover {
+			transform: rotate(380deg);
+		}
+		.cls-1 {
+			transition: all 2s ease;
+		}
+		.cls-1:hover {
+			transform: rotate(420deg);
+		}
+		#logo_container {
+			position: absolute;
+			width: 35vw;
+			height: 35vw;
+			top: 45%;
+			margin-top: -17.5vw;
+			left: 50%;
+			margin-left: -17.5vw;
+		}
+		#Layer_1 {
+			width: 100%;
+			height: 100%;
+
+		}
+
+		#header {
+			width: 100vw;
+		}
+		#nav_table {
+			width: 100%;
+		}
+		#nav_table td {
+			width: 33.3333%;
+			text-align: center;
+		}
+
+		#lower {
+			position: absolute;
+			width: 100vw;
+			bottom: 0;
+			text-align: center;
+			margin-bottom: 2vh;
+		}
+		a {
+			text-decoration: none;
+			color: white;
+		}
+	</style>
+
+</head>
+<body onload="load_func()">
+	<div id="header">
+		<table id="nav_table">
+			<tr>
+				<td>
+					
+				</td>
+				<td>
+					<div id="time">
+						<h1 id="replaceTime">Time</h1>
+						<h2 id="replaceDate">Date</h2>
+					</div>
+				</td>
+				<td>
+					
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	
+	<div id="logo_container">
+		<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="185.96288" height="151.39489" viewBox="0 0 185.96288 151.39489">
+  			<defs>
+    			<style>
+				      .cls-1 {
+				        fill: #F1B137;
+				        transform-origin: 149.09224px 121.04038px;
+				       	transform: rotate(60deg);
+				      }
+
+				      .cls-2 {
+				        fill: #d9601e;
+				        
+				      }
+
+				      .cls-3 {
+				        font-size: 50px;
+				        fill: #fff;
+				        font-family: 'Lato',AvenirNext-DemiBold, Avenir Next;
+				        font-weight: 700;
+				      }
+
+				      .cls-4 {
+				        letter-spacing: -0.01199em;
+				      }
+
+				      .cls-5 {
+				        fill: #b0413e;
+				        transform: rotate(20deg);
+				        transform-origin: 35.853px 32.724px;
+				      }
+
+    			</style>
+  			</defs>
+  			<polygon class="cls-1" points="150.092 88.568 180.963 111.083 169.171 147.513 131.013 147.513 119.222 111.083 150.092 88.568"/>
+  			<polygon class="cls-2" points="110.075 151.395 165.922 85.123 120.05 11.781 35.853 32.724 29.688 119.011 110.075 151.395"/>
+  			<text class="cls-3" transform="translate(52.41217 100.2307)">J<tspan class="cls-4" x="29.89941" y="0">W</tspan></text>
+  			<polygon class="cls-5" points="35.871 0 66.741 22.515 54.95 58.945 16.792 58.945 5 22.515 35.871 0"/>
+		</svg>
+	</div>
+			<div id="lower">
+				<p class="medium" id="goodMorning">Good morning, James.</p>
+    			<p class="light" id="goodDay">It's <span id="dayOfWeek">Monday</span>, <span id="month">July</span> <span id="dayOfMonth">24</span><sup id="th">th</sup>.</p>
+    			<p class="medium"><a href="alt.html">*</a></p>
+			</div>
+
+</body>
+</html>
